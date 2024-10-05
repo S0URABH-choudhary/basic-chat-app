@@ -24,12 +24,10 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on("new-user-joined", name => {
-      console.log("new user",name);
       users[socket.id] = name;
       socket.broadcast.emit('user-joined', name);
-
-    socket.on("message-send", (message , name) =>{
-      socket.broadcast.emit("message-received", message, name)
+      socket.on("message-send", message=>{
+        socket.broadcast.emit("message-received", {message: message, name:users[socket.id]})
     })
     } )
   });

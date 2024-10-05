@@ -31,10 +31,18 @@ html,body{
 
 .logo{
     position: absolute;
+    display: grid;
+    align-items: center;
+    padding-inline: 20px;
+    grid-template-columns: 60px 1fr;
     height: 10%;
     width: 100%;
     background: #0F67B1;
 
+}
+.logo img{
+    height: 50px;
+    width: 50px;
 }
 
 .chat-section{
@@ -53,6 +61,13 @@ html,body{
     right: 0;
     height: 10%;
     width: calc(100% - 20rem);
+}
+
+.my-name{
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    font-size: 25px;
 }
 
 .left,.right{
