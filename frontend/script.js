@@ -4,13 +4,18 @@ const  form = document.getElementById("message-container");
 const messagebox = document.getElementById("chat")
 const  messageInput = document.getElementById("message-input");
 const myname = document.getElementById("chat-header")
+const mymembers = document.getElementById("members")
 
 const name = prompt("enter your name");
 socket.emit("new-user-joined", name);
 
-
-
-
+// to add all members in side pannel
+addmembers = (name) =>{
+    const memberelement = document.createElement("div");
+    memberelement.innerText = name;
+    memberelement.classList.add("membername")
+    mymembers.append(memberelement);
+}
 
 // to display user name on top of the tab
 addname = (name) => {
@@ -24,7 +29,7 @@ addname(name)
 // to announce who joined 
 socket.on('user-joined', name =>{
     appand(`${name}: have joined the chat`, 'left')
-    
+    addmembers(name);
 }) 
 
 // sending and receving messages
